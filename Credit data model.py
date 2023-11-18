@@ -11,13 +11,13 @@ import seaborn as sns
 sns.set()
 
 # Read data
-filename = "C:\\Users\\harry\\OneDrive\\Learning\\Leiter resources\Credit.csv"
+filename = "Data\Credit.csv"
 df = pd.read_csv(filename)
 
 # Extract/create the required columns
 y = df["Balance"]
-x = pd.DataFrame(columns=["Sex_indicator"])
-x = pd.DataFrame(df["Sex"].apply(lambda x: 1 if x == 'Female' else 0))
+x = pd.DataFrame(columns=["Gender_indicator"])
+x = pd.DataFrame(df["Gender"].apply(lambda x: 1 if x == 'Female' else 0))
 
 # Initialise and fit the model
 lreg = LinearRegression()
@@ -36,7 +36,7 @@ ax.plot(x, lreg.predict(x), "bx-", label="Predictions")
 plt.xlabel("Sex indicator - 1 is Female")
 plt.ylabel("Balance")
 plt.legend()
-plt.text(0, 0, text)
+plt.text(0, -800, text)
 plt.show()
 
 
